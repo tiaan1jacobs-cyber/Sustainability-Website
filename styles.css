@@ -1,6 +1,7 @@
-/* =========================
+/* =============================
    Sustainable Living — Full CSS
-   ========================= */
+   (matches the screenshot)
+   ============================= */
 
 /* Global */
 * { box-sizing: border-box; }
@@ -13,9 +14,8 @@ body {
   color: #111;
 }
 
-/* Center main regions per guide */
+/* Center main regions to 90% / max 1200 */
 header,
-nav ul,
 #content-wrapper {
   width: 90%;
   max-width: 1200px;
@@ -26,50 +26,52 @@ nav ul,
 a { color: #008000; }
 a:hover { color: #075a22; }
 
-/* =========================
-   Header + Logo
-   ========================= */
+/* =============================
+   Header + J Logo
+   ============================= */
 header {
-  position: relative;
+  position: relative;                 /* lets the logo be positioned inside */
   padding: .6rem 0 .4rem;
 }
 header h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
-  text-align: center;
-  padding-left: 50px;
+  text-align: left;                   /* like the screenshot */
+  padding-left: 50px;                 /* clears the J area */
 }
 
-/* Make the "J" hang over the green bar */
-#logo {
-  position: absolute;
+/* Make the “J” hang over the green bar */
+#logo{
+  position: absolute;                 /* relative to <header> */
   left: 0;
-  top: 12px;
-  height: 100px;
+  top: 12px;                          /* tweak for more/less overlap */
+  height: 100px;                      /* matches look in figure */
   width: auto;
-  z-index: 10;
+  z-index: 10;                        /* sits on top of the nav bar */
 }
 
-/* =========================
-   Navbar (green bar)
-   ========================= */
+/* =============================
+   Green Navbar (full width)
+   ============================= */
 nav {
-  background: #008000;
-  border-top: 4px solid #1eaa39;
+  background: #008000;                /* green bar */
+  border-top: 4px solid #1eaa39;      /* thin lighter strip */
   position: relative;
-  z-index: 1;
+  z-index: 1;                         /* stay behind the J */
+  display: flex;                      /* lets us center the UL */
+  justify-content: center;
 }
 
-/* Center the nav links */
+/* Center the links row in the bar */
 nav ul {
   list-style: none;
-  margin: 0 auto;
+  margin: 0;                          /* UL itself has no extra margins */
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: center;            /* links centered under the title */
   align-items: center;
-  gap: 2rem;
+  gap: 2rem;                          /* space between links */
 }
 nav li { display: inline-block; }
 nav a {
@@ -84,156 +86,108 @@ nav a:hover {
   color: #9ae39a;
 }
 
-/* =========================
+/* =============================
    Two-Column Layout (Sidebar + Main)
-   ========================= */
-#content-wrapper {
+   ============================= */
+#content-wrapper{
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0;
   margin-top: 10px;
 }
 
-/* Sidebar column — fixed width, LEFT side */
-#content-wrapper > aside {
-  background: #ccc;
+/* Sidebar (left) — fixed width like the picture */
+#content-wrapper > aside{
+  background: #ccc;                   /* grey slab behind cards */
   padding: .5rem;
-  order: 1;
-  flex: 0 0 240px;
+  margin-right: 1rem;
+  position: relative;
+  top: 20px;                          /* nudge down to align with main image */
+  order: 1;                           /* left column */
+  flex: 0 0 240px;                    /* ~240px fixed */
   max-width: 240px;
-  margin-top: 20px;
 }
 
-/* Main column fills remaining space, RIGHT side */
-#content-wrapper > main {
+/* Main (right) fills remaining space */
+#content-wrapper > main{
   order: 2;
   flex: 1;
 }
 
-/* =========================
-   Sidebar "EPA Resources" Cards
-   ========================= */
-aside h2 {
+/* Sidebar cards */
+aside h2{
   margin: 0 0 .5rem 0;
   white-space: nowrap;
-  font-size: 1.1rem;
 }
-aside section {
+aside section{
   background: #fff;
   border: 1px solid #008000;
   margin-bottom: 1rem;
 }
-aside h3 {
+aside h3{
   background: #008000;
   color: #fff;
   padding: .5rem;
   margin: 0;
   font-weight: 700;
-  font-size: 1rem;
 }
-aside a { 
-  display: block; 
-  padding: .5rem;
-  text-decoration: none;
-  color: #008000;
-}
-aside a:hover {
-  color: #075a22;
-}
+aside a{ display: inline-block; padding: .5rem; }
 
-/* =========================
-   Main Article + Image
-   ========================= */
-main article img {
-  border: 3px double #333;
-  float: left;
-  margin: .5rem 1rem .5rem 0;
+/* =============================
+   Main Article + Hero Image
+   ============================= */
+main article img{
+  border: 3px double #333;            /* per assignment */
+  float: left;                        /* text wraps around */
+  margin: .5rem 1rem .5rem 0;         /* top/right/bottom/left */
   height: auto;
-  max-width: 400px;
-  width: 400px;
+  max-width: 100%;
 }
-main article h2 { 
-  margin-top: 0;
-  color: #008000;
-  font-size: 1.5rem;
-}
+main article h2{ margin-top: 0; }
 
-/* =========================
-   Bottom Three Columns
-   ========================= */
-main > section {
+/* =============================
+   Bottom Three Green Panels
+   ============================= */
+main > section{
   display: flex;
-  margin-top: 2rem;
-  gap: 1rem;
-  clear: both;
+  margin-top: 1rem;
 }
-main > section > div {
-  background: #e7f7e7;
+main > section > div{
+  background: #e7f7e7;                /* pale green panel */
   border: 1px solid #008000;
   border-radius: 10px;
   text-align: center;
   flex: 1;
+  margin-right: 1rem;
   padding-bottom: .5rem;
 }
-main > section > div > h2 {
+main > section > div:last-child{ margin-right: 0; }
+
+main > section > div > h2{
   background: #008000;
   color: #fff;
-  margin: 0;
+  margin: 0;                          /* remove top margin */
   padding: .4rem .6rem;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0 0;       /* rounded top corners only */
   font-size: 1.1rem;
   font-weight: 700;
 }
-main > section > div img {
-  display: block;
+main > section > div img{
+  display: block;                     /* lets auto margins center it */
   margin: .5rem auto;
   border: 3px double #333;
   max-width: 90%;
   height: auto;
-  width: 200px;
 }
-main > section > div a { 
-  text-decoration: none; 
-  color: #008000;
-}
-main > section > div a p { 
-  margin: .3rem 0 .6rem;
-}
+main > section > div a{ text-decoration: none; }
+main > section > div a p{ margin: .3rem 0 .6rem; color: #008000; }
 
-/* =========================
-   Footer
-   ========================= */
-footer {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  background: #ccc;
+/* Footer */
+footer{
+  width: 90%;
+  max-width: 1200px;
+  margin: 1.25rem auto 2rem;
   color: #333;
+  font-size: .9rem;
 }
 
-/* =========================
-   Responsive adjustments
-   ========================= */
-@media (max-width: 768px) {
-  #content-wrapper {
-    flex-direction: column;
-  }
-  
-  #content-wrapper > aside {
-    order: 2;
-    margin-top: 1rem;
-    max-width: none;
-  }
-  
-  #content-wrapper > main {
-    order: 1;
-  }
-  
-  main > section {
-    flex-direction: column;
-  }
-  
-  main > section > div {
-    margin-bottom: 1rem;
-  }
-}
