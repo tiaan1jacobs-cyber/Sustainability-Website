@@ -30,7 +30,7 @@ a:hover { color: #075a22; }
    Header + Logo
    ========================= */
 header {
-  position: relative;                 /* allows absolute logo inside */
+  position: relative;
   padding: .6rem 0 .4rem;
 }
 header h1 {
@@ -38,17 +38,17 @@ header h1 {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  padding-left: 50px;                 /* clears space for the J on the left */
+  padding-left: 50px;
 }
 
-/* Make the “J” hang over the green bar */
+/* Make the "J" hang over the green bar */
 #logo {
-  position: absolute;                 /* relative to <header> */
+  position: absolute;
   left: 0;
-  top: 12px;                          /* increase for more overlap, decrease for less */
-  height: 100px;                      /* matches the target look */
+  top: 12px;
+  height: 100px;
   width: auto;
-  z-index: 10;                        /* sits above the nav */
+  z-index: 10;
 }
 
 /* =========================
@@ -58,7 +58,7 @@ nav {
   background: #008000;
   border-top: 4px solid #1eaa39;
   position: relative;
-  z-index: 1;                         /* keep behind the logo */
+  z-index: 1;
 }
 
 /* Center the nav links */
@@ -67,9 +67,9 @@ nav ul {
   margin: 0 auto;
   padding: 0;
   display: flex;
-  justify-content: center;            /* centered links in the green bar */
+  justify-content: center;
   align-items: center;
-  gap: 2rem;                          /* spacing between links */
+  gap: 2rem;
 }
 nav li { display: inline-block; }
 nav a {
@@ -90,34 +90,33 @@ nav a:hover {
 #content-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 0;
+  gap: 1rem;
   margin-top: 10px;
 }
 
-/* Sidebar column — fixed width to match the look */
+/* Sidebar column — fixed width, LEFT side */
 #content-wrapper > aside {
-  background: #ccc;                   /* grey slab */
+  background: #ccc;
   padding: .5rem;
-  margin-right: 1rem;
-  position: relative;
-  top: 20px;                          /* nudge down to align with main image */
-  order: 1;                           /* left column */
-  flex: 0 0 240px;                    /* fixed ~240px */
+  order: 1;
+  flex: 0 0 240px;
   max-width: 240px;
+  margin-top: 20px;
 }
 
-/* Main column fills remaining space */
+/* Main column fills remaining space, RIGHT side */
 #content-wrapper > main {
-  order: 2;                           /* right column */
+  order: 2;
   flex: 1;
 }
 
 /* =========================
-   Sidebar “EPA Resources” Cards
+   Sidebar "EPA Resources" Cards
    ========================= */
 aside h2 {
   margin: 0 0 .5rem 0;
   white-space: nowrap;
+  font-size: 1.1rem;
 }
 aside section {
   background: #fff;
@@ -130,54 +129,111 @@ aside h3 {
   padding: .5rem;
   margin: 0;
   font-weight: 700;
+  font-size: 1rem;
 }
-aside a { display: inline-block; padding: .5rem; }
+aside a { 
+  display: block; 
+  padding: .5rem;
+  text-decoration: none;
+  color: #008000;
+}
+aside a:hover {
+  color: #075a22;
+}
 
 /* =========================
    Main Article + Image
    ========================= */
 main article img {
-  border: 3px double #333;            /* double border */
-  float: left;                        /* text wraps around the image */
-  margin: .5rem 1rem .5rem 0;         /* top/right/bottom/left */
+  border: 3px double #333;
+  float: left;
+  margin: .5rem 1rem .5rem 0;
   height: auto;
-  max-width: 100%;
+  max-width: 400px;
+  width: 400px;
 }
-main article h2 { margin-top: 0; }
+main article h2 { 
+  margin-top: 0;
+  color: #008000;
+  font-size: 1.5rem;
+}
 
 /* =========================
    Bottom Three Columns
    ========================= */
 main > section {
   display: flex;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  gap: 1rem;
+  clear: both;
 }
 main > section > div {
-  background: #e7f7e7;                /* pale green panel */
+  background: #e7f7e7;
   border: 1px solid #008000;
   border-radius: 10px;
   text-align: center;
   flex: 1;
-  margin-right: 1rem;
   padding-bottom: .5rem;
 }
-main > section > div:last-child { margin-right: 0; }
 main > section > div > h2 {
   background: #008000;
   color: #fff;
-  margin: 0;                          /* remove top margin per guide */
+  margin: 0;
   padding: .4rem .6rem;
-  border-radius: 10px 10px 0 0;       /* rounded top corners only */
+  border-radius: 10px 10px 0 0;
   font-size: 1.1rem;
   font-weight: 700;
 }
 main > section > div img {
-  display: block;                     /* lets auto margins center it */
+  display: block;
   margin: .5rem auto;
   border: 3px double #333;
   max-width: 90%;
   height: auto;
+  width: 200px;
 }
-main > section > div a { text-decoration: none; }
-main > section > div a p { margin: .3rem 0 .6rem;
+main > section > div a { 
+  text-decoration: none; 
+  color: #008000;
+}
+main > section > div a p { 
+  margin: .3rem 0 .6rem;
+}
 
+/* =========================
+   Footer
+   ========================= */
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: #ccc;
+  color: #333;
+}
+
+/* =========================
+   Responsive adjustments
+   ========================= */
+@media (max-width: 768px) {
+  #content-wrapper {
+    flex-direction: column;
+  }
+  
+  #content-wrapper > aside {
+    order: 2;
+    margin-top: 1rem;
+    max-width: none;
+  }
+  
+  #content-wrapper > main {
+    order: 1;
+  }
+  
+  main > section {
+    flex-direction: column;
+  }
+  
+  main > section > div {
+    margin-bottom: 1rem;
+  }
+}
